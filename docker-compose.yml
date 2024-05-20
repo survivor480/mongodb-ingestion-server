@@ -1,0 +1,23 @@
+version: "3"
+
+networks:
+  nkda_default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.43.0/24
+
+services:
+# PWMS = Portable Water Monitoring System
+  NKDA_server_room_ingestion_server:
+    image: node:bullseye-slim
+    container_name: NKDA_server_room_ingestion_server
+    build: .
+    volumes:
+      - ./:/usr/src/app
+    #command: npm start
+    restart: always
+    ports:
+      - "1853:3000"
+    networks:
+      - nkda_default 

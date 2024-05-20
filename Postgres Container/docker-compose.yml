@@ -1,0 +1,15 @@
+version: '3'
+services:
+  learning_mongo_master:
+    image: mongo:6.0
+    container_name: learning_mongo_master
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: learning
+      MONGO_INITDB_ROOT_PASSWORD: qwerty78
+      MONGO_INITDB_DATABASE: learning
+    ports:
+      - '8000:27017'
+volumes:
+  nosql: 
+    driver: local
